@@ -45,7 +45,7 @@ public class ChaoJDialog extends javax.swing.JDialog {
                 }
             }   
         };
-        t = new Timer(50, al);//cứ 0,2s sẽ +5 trên thanh progressBar
+        t = new Timer(100, al);//cứ 0,2s sẽ +5 trên thanh progressBar
         t.start();
     }
 

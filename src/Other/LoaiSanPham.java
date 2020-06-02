@@ -5,6 +5,11 @@
  */
 package Other;
 
+/**
+ *
+ * @author Anh Tuấn
+ */
+
 public class LoaiSanPham {
 
     private String maSP;
