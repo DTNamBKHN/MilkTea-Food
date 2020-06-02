@@ -47,13 +47,13 @@ public class QLSanPham extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(this);
-        txtNguoiTao.setText(ShareHelper.USER.getHoTen());
-        txtNguoiTaoSP.setText(ShareHelper.USER.getHoTen());
+        txtNguoiTao.setText(ShareHelper.USER.getHoTen());//hien ten cua nguoi dang nhap hien tai tren panel "Loai san pham"
+        txtNguoiTaoSP.setText(ShareHelper.USER.getHoTen());//hien ten cua nguoi dang nhap hien tai tren panel "Chi tiet san pham"
 
         load();
     }
 
-    void load() {
+    void load() {//load o panel "Loai san pham"
         DefaultTableModel model = (DefaultTableModel) tableSP.getModel();
         model.setRowCount(0);
 
@@ -81,7 +81,7 @@ public class QLSanPham extends javax.swing.JFrame {
 
         if (txtTenLoaiSP.getText().equals("") || txtSL.getText().equals("")
                 || txtGhiChu.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Hãy nhập đủ dữ liệu sau đó ấn Save");
+            JOptionPane.showMessageDialog(rootPane, "Hãy nhập đủ dữ liệu");
             return false;
         }
 
@@ -103,8 +103,6 @@ public class QLSanPham extends javax.swing.JFrame {
 
         return true;
     }
-
-    ;
 
     void insert() {
         SanPham model = getModel();
@@ -144,7 +142,7 @@ public class QLSanPham extends javax.swing.JFrame {
     }
 
     void clear() {
-        this.setModel(new SanPham());
+        this.setModel(new SanPham());//nut Nhap moi tren giao dien
     }
 
     void edit() {
@@ -216,7 +214,7 @@ public class QLSanPham extends javax.swing.JFrame {
         String strGia = txtGia.getText();
 
         if (txtTenSP.getText().equals("") || txtGia.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Hãy nhập đủ dữ liệu sau đó ấn Save");
+            JOptionPane.showMessageDialog(rootPane, "Hãy nhập đủ dữ liệu");
             return false;
         }
 
@@ -227,8 +225,6 @@ public class QLSanPham extends javax.swing.JFrame {
 
         return true;
     }
-
-    ;
 
     void insertSP() {
         LoaiSanPham model = getModelSP();
@@ -271,7 +267,7 @@ public class QLSanPham extends javax.swing.JFrame {
         this.setModelSP(new LoaiSanPham());
     }
 
-    void editSP() {
+    void editSP() {//ham nay duoc dung khi nhan vao bang hien thi, du lieu se duoc hien thi tren o nhap
         try {
             Integer makh = (Integer) tableCTSP.getValueAt(this.index, 0);
             LoaiSanPham model = spdao.findByIdSP(makh);
@@ -393,8 +389,8 @@ public class QLSanPham extends javax.swing.JFrame {
         txtNguoiTaoSP = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtMa = new javax.swing.JTextField();
-        cbbKichThuoc = new javax.swing.JComboBox<>();
-        cboLoaiSP = new javax.swing.JComboBox<>();
+        cbbKichThuoc = new javax.swing.JComboBox<String>();
+        cboLoaiSP = new javax.swing.JComboBox<String>();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -729,9 +725,17 @@ public class QLSanPham extends javax.swing.JFrame {
 
         txtMa.setEditable(false);
 
-        cbbKichThuoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lớn", "Vừa", "Nhỏ" }));
+        cbbKichThuoc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lớn", "Vừa", "Nhỏ" }));
 
-        cboLoaiSP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboLoaiSP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboLoaiSP.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cboLoaiSPFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cboLoaiSPFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -790,7 +794,7 @@ public class QLSanPham extends javax.swing.JFrame {
                     .addComponent(txtTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
                     .addComponent(txtNguoiTaoSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -909,6 +913,14 @@ public class QLSanPham extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_tableCTSPMouseClicked
+
+    private void cboLoaiSPFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cboLoaiSPFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboLoaiSPFocusGained
+
+    private void cboLoaiSPFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cboLoaiSPFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboLoaiSPFocusLost
 
     /**
      * @param args the command line arguments

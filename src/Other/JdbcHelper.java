@@ -18,11 +18,13 @@ import java.util.logging.Logger;
  * @author Anh Tuấn
  */
 public class JdbcHelper {
+
     private static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private static String dburl = "jdbc:sqlserver://localhost:1433;databaseName=Milk_Tea&FoodS;";
     private static String username = "sa";
     private static String password = "123456";
-     public static Connection conn;
+    public static Connection conn;
+
     // Câu lệnh dùng để nạp driver
     static {
         try {
@@ -33,11 +35,12 @@ public class JdbcHelper {
             ex.printStackTrace();
             System.out.println("Lỗi thiếu thư viện kết nối");
         } catch (SQLException ex) {
-             ex.printStackTrace();
+            ex.printStackTrace();
             System.out.println("Lỗi kết nối CSDL!");
         }
     }
 // xây dựng prepareStatement
+
     public static PreparedStatement prepareStatement(String sql, Object... args) throws SQLException {
         Connection connection = DriverManager.getConnection(dburl, username, password);
         PreparedStatement pstmt = null;
@@ -52,6 +55,7 @@ public class JdbcHelper {
         return pstmt;
     }
 // câu lệnh  SQL thao tác (INSERT, UPDATE, DELETE) 
+
     public static int executeUpdate(String sql, Object... args) {
         try {
             PreparedStatement stmt = prepareStatement(sql, args);
@@ -66,6 +70,7 @@ public class JdbcHelper {
         return -1;
     }
 //câu lệnh SQL truy vấn (SELECT) hoặc thủ tục lưu truy vấn dữ liệu
+
     public static ResultSet executeQuery(String sql, Object... args) {
         try {
             PreparedStatement stmt = prepareStatement(sql, args);
@@ -76,7 +81,4 @@ public class JdbcHelper {
         }
     }
 
-    
-
-    
 }

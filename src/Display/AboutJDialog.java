@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -41,8 +41,9 @@ public class AboutJDialog extends javax.swing.JDialog {
         setTitle("GIỚI THIỆU");
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("Dự án 1  yêu cầu sinh viên thực hiện một dự án hoàng chỉnh. Sinh viên sử dụng kiến\nthức lập trình Java Swing và SQL Server để xây dựng một ứng dụng desktop theo chủ đề \ntự chọn hoặc giảng viên giao.");
+        jTextArea1.setText("\tỨng dụng quản lý sản phẩm và nhân viên.\n");
         jTextArea1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jTextArea1.setEnabled(false);
         jScrollPane1.setViewportView(jTextArea1);

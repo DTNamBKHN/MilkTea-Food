@@ -21,7 +21,7 @@ public class ShareHelper {
 
     static {         // Tải biểu tượng ứng dụng
         String file = "";
-        APP_ICON = new ImageIcon(ShareHelper.class.getResource(file)).getImage();
+        APP_ICON = new ImageIcon(ShareHelper.class.getResource(file)).getImage();//You use someclassname.class when you want to work with the Class object and don't have an object instance.
     }
 
     public static boolean saveLogo(File file) {
@@ -43,15 +43,15 @@ public class ShareHelper {
     }
 
     /*    Đọc hình ảnh logo  
- * @param fileName  là tên file logo 
- * @return ảnh đọc được
+     * @param fileName  là tên file logo 
+     * @return ảnh đọc được
      */
     public static ImageIcon readLogo(String fileName) {
         File path = new File("src//image", fileName);
         return new ImageIcon(path.getAbsolutePath());
     }
     /*      * Đối tượng này chứa thông tin người sử dụng sau khi đăng nhập
-     */    public static NhanVien USER =null;//biến static lưu lại trên toàn bộ file
+     */ public static NhanVien USER = null;//biến static lưu lại trên toàn bộ file
 
     /*       Xóa thông tin của người sử dụng khi có yêu cầu đăng xuất 
      */ public static void logoff() {
@@ -59,8 +59,8 @@ public class ShareHelper {
     }
 
     /*    
- * Kiểm tra xem đăng nhập hay chưa 
- * @return đăng nhập hay chưa
+     * Kiểm tra xem đăng nhập hay chưa 
+     * @return đăng nhập hay chưa
      */ public static boolean authenticated() {
         return ShareHelper.USER != null;
     }

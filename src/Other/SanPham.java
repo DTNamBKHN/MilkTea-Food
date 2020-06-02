@@ -8,11 +8,7 @@ package Other;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- *
- * @author Anh Tuấn
- */
-public class SanPham implements  Serializable{
+public class SanPham implements Serializable {
 
     private String LoaiSP;
     private String TenSP;
@@ -20,9 +16,9 @@ public class SanPham implements  Serializable{
     private String NguoiTao;
     private String MoTa;
 
-     @Override
-     public String toString() { 
-         return this.TenSP;
+    @Override
+    public String toString() {
+        return this.TenSP;
     }
 
     public String getLoaiSP() {
@@ -49,7 +45,7 @@ public class SanPham implements  Serializable{
         this.SoLuong = SoLuong;
     }
 
-     public String getNguoiTao() {
+    public String getNguoiTao() {
         return NguoiTao;
     }
 
@@ -64,7 +60,4 @@ public class SanPham implements  Serializable{
     public void setMoTa(String MoTa) {
         this.MoTa = MoTa;
     }
-
-
-    
 }

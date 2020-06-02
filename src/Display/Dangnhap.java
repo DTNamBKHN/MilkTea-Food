@@ -14,62 +14,59 @@ import Other.NhanVien;
 import Other.NhanvienDao;
 import Other.ShareHelper;
 
-
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Anh Tuấn
  */
 public class Dangnhap extends javax.swing.JDialog {
-   NhanvienDao dao = new NhanvienDao();
 
+    NhanvienDao dao = new NhanvienDao();
 
-   void init(){ 
-        
-    } 
-    void login() { 
-        String manv = txtMaNV.getText(); 
-        String matKhau = new String(txtMatKhau.getPassword()); 
-        try { 
-           NhanVien nhanVien = dao.findById(manv); 
-            if(nhanVien != null){ 
-                String matKhau2 = nhanVien.getMatKhau(); 
-                if(matKhau.equals(matKhau2)){ 
-                    ShareHelper.USER = nhanVien; 
-                    DialogHelper.alert(this, "Đăng nhập thành công!"); 
-                    this.dispose(); 
-                } 
-                else{ 
-                    DialogHelper.alert(this, "Sai mật khẩu!"); 
-                } 
-            } 
-            else{ 
-                DialogHelper.alert(this, "Sai tên đăng nhập!"); 
-            } 
-        }  
-        catch (Exception e) {            
-            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!"+e); 
-            
-        } 
-    } 
-    void exit(){ 
-        if(DialogHelper.confirm(this, "Bạn có muốn thoát khỏi ứng dụng không?")){ 
-            System.exit(0); 
-        }}
+    void init() {
+
+    }
+
+    void login() {
+        String manv = txtMaNV.getText();
+        String matKhau = new String(txtMatKhau.getPassword());
+        try {
+            NhanVien nhanVien = dao.findById(manv);
+            if (nhanVien != null) {
+                String matKhau2 = nhanVien.getMatKhau();
+                if (matKhau.equals(matKhau2)) {
+                    ShareHelper.USER = nhanVien;
+                    DialogHelper.alert(this, "Đăng nhập thành công!");
+                    this.dispose();
+                } else {
+                    DialogHelper.alert(this, "Sai mật khẩu!");
+                }
+            } else {
+                DialogHelper.alert(this, "Sai tên đăng nhập!");
+            }
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!" + e);
+
+        }
+    }
+
+    void exit() {
+        if (DialogHelper.confirm(this, "Bạn có muốn thoát khỏi ứng dụng không?")) {
+            System.exit(0);
+        }
+    }
+
     /**
      * Creates new form Dangnhap
      */
     public Dangnhap(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null); 
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -115,7 +112,7 @@ public class Dangnhap extends javax.swing.JDialog {
         imgUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/user.png"))); // NOI18N
         imgUser.setText("Tên đăng nhập:");
 
-        txtMaNV.setText("2");
+        txtMaNV.setText("1");
         txtMaNV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMaNVActionPerformed(evt);
@@ -254,13 +251,13 @@ public class Dangnhap extends javax.swing.JDialog {
 
     private void txtMatKhauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhauKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             login();
         }
     }//GEN-LAST:event_txtMatKhauKeyPressed
 
     private void txtMaNVKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaNVKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             login();
         }
     }//GEN-LAST:event_txtMaNVKeyPressed

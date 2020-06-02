@@ -57,8 +57,11 @@
         <Component class="javax.swing.JTextArea" name="jTextArea1">
           <Properties>
             <Property name="columns" type="int" value="20"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Monospaced" size="18" style="1"/>
+            </Property>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="D&#x1ef1; &#xe1;n 1  y&#xea;u c&#x1ea7;u sinh vi&#xea;n th&#x1ef1;c hi&#x1ec7;n m&#x1ed9;t d&#x1ef1; &#xe1;n ho&#xe0;ng ch&#x1ec9;nh. Sinh vi&#xea;n s&#x1eed; d&#x1ee5;ng ki&#x1ebf;n&#xa;th&#x1ee9;c l&#x1ead;p tr&#xec;nh Java Swing v&#xe0; SQL Server &#x111;&#x1ec3; x&#xe2;y d&#x1ef1;ng m&#x1ed9;t &#x1ee9;ng d&#x1ee5;ng desktop theo ch&#x1ee7; &#x111;&#x1ec1; &#xa;t&#x1ef1; ch&#x1ecd;n ho&#x1eb7;c gi&#x1ea3;ng vi&#xea;n giao."/>
+            <Property name="text" type="java.lang.String" value="&#x9;&#x1ee8;ng d&#x1ee5;ng qu&#x1ea3;n l&#xfd; s&#x1ea3;n ph&#x1ea9;m v&#xe0; nh&#xe2;n vi&#xea;n.&#xa;"/>
             <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
