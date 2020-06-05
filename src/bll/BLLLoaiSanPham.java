@@ -12,10 +12,6 @@ import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
-/**
- *
- * @author Tuan Nguyen
- */
 public class BLLLoaiSanPham {
      //3. Hàm đổ dữ liệu vào Combobox Loại sản phẩm
     public static void DoDuLieuVaoCBBLoaiSanPham(JComboBox cbb){
@@ -34,5 +30,4 @@ public class BLLLoaiSanPham {
             ThongBao.ThongBao("Thông báo", "Lỗi truy vấn dữ liệu.");
         }
     }
-    
 }

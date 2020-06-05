@@ -30,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Hashtable;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import mp3player.playmp3;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -39,10 +40,6 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 
-/**
- *
- * @author Tuan Nguyen
- */
 public class HoaDonBanHang extends javax.swing.JFrame {
 
     public static JdbcHelper conn;
@@ -76,7 +73,7 @@ public class HoaDonBanHang extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlSanPham = new javax.swing.JPanel();
-        cbbLoaiSP = new javax.swing.JComboBox<>();
+        cbbLoaiSP = new javax.swing.JComboBox<String>();
         txtTimTen = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblSanPham = new javax.swing.JTable();
@@ -92,11 +89,11 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtDienThoai = new javax.swing.JTextField();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<String>();
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         txtGhiChu = new javax.swing.JTextField();
-        cbbKH = new javax.swing.JComboBox<>();
+        cbbKH = new javax.swing.JComboBox<String>();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         txtNhanvien = new javax.swing.JTextField();
@@ -120,7 +117,7 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         btnTaoMoi = new javax.swing.JButton();
         lbLoiGia = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        btnRemove = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HÓA ĐƠN BÁN HÀNG");
@@ -144,6 +141,11 @@ public class HoaDonBanHang extends javax.swing.JFrame {
             }
         });
 
+        txtTimTen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTimTenActionPerformed(evt);
+            }
+        });
         txtTimTen.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTimTenKeyReleased(evt);
@@ -194,7 +196,7 @@ public class HoaDonBanHang extends javax.swing.JFrame {
             .addGroup(pnlSanPhamLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
                     .addGroup(pnlSanPhamLayout.createSequentialGroup()
                         .addComponent(cbbLoaiSP, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -249,7 +251,7 @@ public class HoaDonBanHang extends javax.swing.JFrame {
 
         txtDienThoai.setEditable(false);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Giá lẻ", "Giá sỉ" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Giá lẻ", "Giá sỉ" }));
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 204));
@@ -453,11 +455,11 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         lbLoiGia.setForeground(new java.awt.Color(255, 0, 0));
         lbLoiGia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
-        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mp3.png"))); // NOI18N
-        jToggleButton1.setText("Trình MP3");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/trash.png"))); // NOI18N
+        btnRemove.setText("Xóa");
+        btnRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                btnRemoveActionPerformed(evt);
             }
         });
 
@@ -484,8 +486,8 @@ public class HoaDonBanHang extends javax.swing.JFrame {
                         .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnlTTHoaDonLayout.createSequentialGroup()
                                 .addComponent(btnTaoMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(60, 60, 60)
-                                .addComponent(jToggleButton1))
+                                .addGap(48, 48, 48)
+                                .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlTTHoaDonLayout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -500,10 +502,10 @@ public class HoaDonBanHang extends javax.swing.JFrame {
                                 .addComponent(jLabel14)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtRepay, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
-                            .addGroup(pnlTTHoaDonLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTTHoaDonLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2)
-                                .addGap(18, 18, 18)
+                                .addGap(57, 57, 57)
                                 .addComponent(btnThanhToan)))))
                 .addGap(20, 20, 20))
             .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -534,11 +536,10 @@ public class HoaDonBanHang extends javax.swing.JFrame {
                     .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnThanhToan, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnTaoMoi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnThanhToan, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                    .addComponent(btnTaoMoi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlTTHoaDonLayout.createSequentialGroup()
@@ -585,7 +586,7 @@ public class HoaDonBanHang extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         //Lấy dữ liệu từ tầng DAO
         ResultSet rsSP = Other.LoaiSanPhamDao.GetAll();
-        BLLSanPham.DoDuLieu(tblSanPham, rsSP);
+        BLLSanPham.DoDuLieu(tblSanPham, rsSP);//bang hien thi ben trai
 
         BLLLoaiSanPham.DoDuLieuVaoCBBLoaiSanPham(cbbLoaiSP);
         //keyword = ""; là load tất cả khách hàng
@@ -600,7 +601,6 @@ public class HoaDonBanHang extends javax.swing.JFrame {
     private String SoHoaDon() {
         String soHoaDon = "";
         try {
-
             DateFormat dateFormat = new SimpleDateFormat("yyMMdd");
 
             Date d = new Date();
@@ -635,19 +635,18 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println("Lỗi số hóa đơn");
         }
-
         return soHoaDon;
     }
     private void cbbLoaiSPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbLoaiSPItemStateChanged
-        MyCombobox cbb = (MyCombobox) cbbLoaiSP.getSelectedItem();
+        MyCombobox cbb = (MyCombobox) cbbLoaiSP.getSelectedItem();//tim loai sp thong qua comboBox
         
         System.out.println(cbb.Text.toString());
-        ResultSet rsall = Other.LoaiSanPhamDao.Search(cbb.Text.toString(), txtTimTen.getText());
+        ResultSet rsall = Other.LoaiSanPhamDao.Search(cbb.Text.toString(), txtTimTen.getText());//tim theo ma sp va ten sp
         BLLSanPham.DoDuLieu(tblSanPham, rsall);
     }//GEN-LAST:event_cbbLoaiSPItemStateChanged
 
     private void txtTimTenKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimTenKeyReleased
-        MyCombobox cbb = (MyCombobox) cbbLoaiSP.getSelectedItem();        
+        MyCombobox cbb = (MyCombobox) cbbLoaiSP.getSelectedItem();//tim loai sp thong qua tim kiem        
         ResultSet rsall = Other.LoaiSanPhamDao.Search(cbb.Text.toString(), txtTimTen.getText());
         BLLSanPham.DoDuLieu(tblSanPham, rsall);
     }//GEN-LAST:event_txtTimTenKeyReleased
@@ -658,12 +657,12 @@ public class HoaDonBanHang extends javax.swing.JFrame {
 
 
     private void tblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMouseClicked
-        if (evt.getClickCount() >= 2) {
+        if (evt.getClickCount() >= 2) {//nguoi dung kich dup chuot de chon
 
             MaSP = tblSanPham.getValueAt(tblSanPham.getSelectedRow(), 0).toString();
             //SoLuong = Integer.parseInt(tblSanPham.getValueAt(tblSanPham.getSelectedRow(), 3).toString());
 
-            jdlAddSanPham jdl = new jdlAddSanPham(this, true);
+            jdlAddSanPham jdl = new jdlAddSanPham(this, true);//ke thua va hien thi cua so
             jdl.setVisible(true);
             System.out.println(SoLuong);
             
@@ -703,7 +702,6 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         for (int i = 0; i < tblCTHD.getRowCount(); i++) {
             tongTien += ChuyenDoi.ChuyenTien(tblCTHD.getValueAt(i, 5).toString());
         }
-
         return tongTien;
     }
 
@@ -739,7 +737,7 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         DAOHoaDon.ThemHoaDon(hd);
 
         //Set MaHD mới thêm dc vào Hóa đơn hd
-        hd.setMaHD(BLLHoaDon.GetMaHDBySoHoaDon(hd.getSoHoaDon()));
+        hd.setMaHD(BLLHoaDon.GetMaHDBySoHoaDon(hd.getSoHoaDon()));//truyen vao so hoa don
 
         //Thêm tất cả chi tiết hóa đơn theo MaHD vừa thêm
         ThemCTHDTuTable(hd.getMaHD());
@@ -780,7 +778,6 @@ public class HoaDonBanHang extends javax.swing.JFrame {
 
     private void btnTaoMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoMoiActionPerformed
         this.TaoMoiHD();
-
     }//GEN-LAST:event_btnTaoMoiActionPerformed
 
     private void txtTimKhachHangKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKhachHangKeyReleased
@@ -836,15 +833,25 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbbLoaiSPActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-        new playmp3().setVisible(true);
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         new CTHoaDon().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtTimTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimTenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTimTenActionPerformed
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        DefaultTableModel tbModel = (DefaultTableModel) tblCTHD.getModel();
+        int removeIndex = tblCTHD.getSelectedRow();
+        if (removeIndex == -1){
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn một sản phẩm !");
+        }
+        else{
+            tbModel.removeRow(removeIndex);
+        }
+    }//GEN-LAST:event_btnRemoveActionPerformed
 
     /*Hàm thêm tất cả các dòng trong Table vào bảng chi tiết hóa đơn*/
     private void ThemCTHDTuTable(int MaHD) {
@@ -909,6 +916,7 @@ public class HoaDonBanHang extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnTaoMoi;
     private javax.swing.JButton btnThanhToan;
     private javax.swing.JComboBox<String> cbbKH;
@@ -937,7 +945,6 @@ public class HoaDonBanHang extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField9;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lbLoiGia;
     private javax.swing.JPanel pnlHoaDon;
     private javax.swing.JPanel pnlSanPham;

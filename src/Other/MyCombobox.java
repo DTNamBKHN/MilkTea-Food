@@ -5,10 +5,6 @@
  */
 package Other;
 
-/**
- *
- * @author Tuan Nguyen
- */
 public class MyCombobox {
     
     public Object Text;

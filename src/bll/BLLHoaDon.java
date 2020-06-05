@@ -11,15 +11,11 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Tuan Nguyen
- */
 public class BLLHoaDon {
     public static int GetMaHDBySoHoaDon(String SoHoaDon){
         ResultSet rs = Other.DAOHoaDon.GetBySoHoaDon(SoHoaDon);
         try {
-            if(rs.next()){
+            if(rs.next()){//neu co thi tra ve MaHD trong csdl
                 return rs.getInt("MaHD");
             }
         } catch (SQLException ex) {

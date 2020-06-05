@@ -8,10 +8,6 @@ package Display;
 import Display.HoaDonBanHang;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author Tuan Nguyen
- */
 public class jdlAddSanPham extends javax.swing.JDialog {
 
     /**
@@ -115,12 +111,12 @@ public class jdlAddSanPham extends javax.swing.JDialog {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         HoaDonBanHang.SoLuong = Integer.parseInt(spnSoLuong.getValue().toString());
-        this.dispose();
+        this.dispose();//sau khi an nut Them thi cua so nay se bien mat
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        txtMaSP.setText(HoaDonBanHang.MaSP);
+        txtMaSP.setText(HoaDonBanHang.MaSP);//hien thi ma sp đa duoc chon o form HoaDonBanHang
 
     }//GEN-LAST:event_formWindowOpened
 

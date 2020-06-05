@@ -14,10 +14,6 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Tuan Nguyen
- */
 public class BLLSanPham {
     //Hàm đổ dữ liệu User vào JTable 
     public static void DoDuLieu(JTable tbl, ResultSet rs ){
