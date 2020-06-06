@@ -10,7 +10,7 @@ public class MyCombobox {
     public Object Text;
     public Object Value;
 
-    public MyCombobox(Object text, Object value) {
+    public MyCombobox(Object text, Object value) {//constructor dung de tao doi tuong co 2 thuoc tinh gom key va value
         Text = text;
         Value = value;
     }

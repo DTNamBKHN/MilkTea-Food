@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class BLLSanPham {
     //Hàm đổ dữ liệu User vào JTable 
-    public static void DoDuLieu(JTable tbl, ResultSet rs ){
+    public static void DoDuLieu(JTable tbl, ResultSet rs ){//tbl: bang duoc truyen vao, rs: duoc truy van tu CSDL
         //Tạo 1 DefaultTableModel 
         DefaultTableModel tbModel = (DefaultTableModel)tbl.getModel();
         //Xóa các dòng trong table
@@ -40,6 +40,4 @@ public class BLLSanPham {
             ThongBao.ThongBao("Lỗi lấy dữ liệu Sản phẩm", "Thông báo");
         }
     }
-    
-   
 }

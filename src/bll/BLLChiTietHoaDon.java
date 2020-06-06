@@ -8,10 +8,6 @@ package bll;
 import Other.DAOChiTietHoaDon;
 import Other.ChiTietHoaDon;
 
-/**
- *
- * @author Tuan Nguyen
- */
 public class BLLChiTietHoaDon {
     public static int Them(ChiTietHoaDon cthd){
         int kq = DAOChiTietHoaDon.Them(cthd);

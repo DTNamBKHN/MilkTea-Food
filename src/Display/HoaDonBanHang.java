@@ -591,7 +591,7 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         BLLLoaiSanPham.DoDuLieuVaoCBBLoaiSanPham(cbbLoaiSP);
         //keyword = ""; là load tất cả khách hàng
         String keyword = "";
-        BLLKhachHang.DoDuLieuVaoCBBKhachHang(cbbKH, keyword);
+        BLLKhachHang.DoDuLieuVaoCBBKhachHang(cbbKH, keyword);//vi cau lenh sql tim kiem gan dung nen keyword = ""; là load tất cả khách hàng
 
         txtSoHoaDon.setText(SoHoaDon());
 
@@ -607,19 +607,20 @@ public class HoaDonBanHang extends javax.swing.JFrame {
 
             soHoaDon = dateFormat.format(d);
             System.out.println("soHoaDon: " + soHoaDon);
-            ResultSet rs = DAOHoaDon.CountSoHoaDon(soHoaDon);
+            ResultSet rs = DAOHoaDon.CountSoHoaDon(soHoaDon);//tra ve so luong hoa don trung voi soHoaDon theo ngay thang
             int rowCount = 0;
             if (rs.next()) {
                 rowCount = rs.getInt(1);
+                System.out.println("rowCount: " + rowCount);
             }
             boolean dup = false;
             do {
                 if (rowCount > 98) {
-                    soHoaDon = soHoaDon + (rowCount + 1);
+                    soHoaDon = soHoaDon + (rowCount + 1);//099,100
                 } else if (rowCount > 8) {
-                    soHoaDon = soHoaDon + "0" + (rowCount + 1);
+                    soHoaDon = soHoaDon + "0" + (rowCount + 1);//010,011,012...
                 } else {
-                    soHoaDon = soHoaDon + "00" + (rowCount + 1);
+                    soHoaDon = soHoaDon + "00" + (rowCount + 1);//001,002...009
                 }
                 System.out.println("soHoaDon: " + soHoaDon);
                 ResultSet rs2 = DAOHoaDon.GetBySoHoaDon(soHoaDon);
@@ -737,7 +738,7 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         DAOHoaDon.ThemHoaDon(hd);
 
         //Set MaHD mới thêm dc vào Hóa đơn hd
-        hd.setMaHD(BLLHoaDon.GetMaHDBySoHoaDon(hd.getSoHoaDon()));//truyen vao so hoa don
+        hd.setMaHD(BLLHoaDon.GetMaHDBySoHoaDon(hd.getSoHoaDon()));//truyen vao so hoa don, tra lai maHD
 
         //Thêm tất cả chi tiết hóa đơn theo MaHD vừa thêm
         ThemCTHDTuTable(hd.getMaHD());

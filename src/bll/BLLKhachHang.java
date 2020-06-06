@@ -15,10 +15,6 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
-/**
- *
- * @author Tuan Nguyen
- */
 public class BLLKhachHang {
      //3. Hàm đổ dữ liệu vào Combobox Khách Hàng
     public static void DoDuLieuVaoCBBKhachHang(JComboBox cbb, String keyword){
