@@ -57,7 +57,7 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         setBounds(100, 100, (int) dim.getWidth(), (int) dim.getHeight());
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        txtNhanvien.setText(ShareHelper.USER.getMaNV());
+        txtNhanVien.setText(ShareHelper.USER.getMaNV());
         conn = new JdbcHelper();
         btnThanhToan.setEnabled(false);
 
@@ -89,14 +89,12 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtDienThoai = new javax.swing.JTextField();
-        jComboBox3 = new javax.swing.JComboBox<String>();
-        jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         txtGhiChu = new javax.swing.JTextField();
         cbbKH = new javax.swing.JComboBox<String>();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        txtNhanvien = new javax.swing.JTextField();
+        btnTimKhachHang = new javax.swing.JButton();
+        txtNhanVien = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCTHD = new javax.swing.JTable();
         pnlTTHoaDon = new javax.swing.JPanel();
@@ -111,7 +109,7 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txtRepay = new javax.swing.JTextField();
-        txtGuest = new javax.swing.JTextField();
+        txtPay = new javax.swing.JTextField();
         txtTongTien = new javax.swing.JTextField();
         btnThanhToan = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -251,12 +249,6 @@ public class HoaDonBanHang extends javax.swing.JFrame {
 
         txtDienThoai.setEditable(false);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Giá lẻ", "Giá sỉ" }));
-
-        jLabel13.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel13.setText("LẤY GIÁ");
-
         jLabel15.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 204));
         jLabel15.setText("GHI CHÚ");
@@ -273,17 +265,17 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 204));
         jLabel3.setText("KHÁCH HÀNG");
 
-        jButton1.setText("+");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnTimKhachHang.setText("+");
+        btnTimKhachHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnTimKhachHangActionPerformed(evt);
             }
         });
 
-        txtNhanvien.setEditable(false);
-        txtNhanvien.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        txtNhanvien.setForeground(new java.awt.Color(255, 0, 0));
-        txtNhanvien.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNhanVien.setEditable(false);
+        txtNhanVien.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txtNhanVien.setForeground(new java.awt.Color(255, 0, 0));
+        txtNhanVien.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout pnlHoaDonLayout = new javax.swing.GroupLayout(pnlHoaDon);
         pnlHoaDon.setLayout(pnlHoaDonLayout);
@@ -299,7 +291,7 @@ public class HoaDonBanHang extends javax.swing.JFrame {
                 .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtNgayTao, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
                     .addComponent(txtSoHoaDon)
-                    .addComponent(txtNhanvien))
+                    .addComponent(txtNhanVien))
                 .addGap(26, 26, 26)
                 .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
@@ -310,19 +302,17 @@ public class HoaDonBanHang extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHoaDonLayout.createSequentialGroup()
                         .addComponent(txtTimKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
+                        .addComponent(btnTimKhachHang))
                     .addComponent(txtEmail)
                     .addComponent(cbbKH, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
                 .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel13)
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtGhiChu)
-                    .addComponent(txtDienThoai)
-                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtDienThoai))
                 .addContainerGap())
         );
         pnlHoaDonLayout.setVerticalGroup(
@@ -330,19 +320,10 @@ public class HoaDonBanHang extends javax.swing.JFrame {
             .addGroup(pnlHoaDonLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlHoaDonLayout.createSequentialGroup()
-                        .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel15)
-                                .addComponent(txtGhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel7)
-                                .addComponent(txtNhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)
+                        .addComponent(txtNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlHoaDonLayout.createSequentialGroup()
                         .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
@@ -351,13 +332,15 @@ public class HoaDonBanHang extends javax.swing.JFrame {
                             .addComponent(txtDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTimKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
-                            .addComponent(jButton1))
+                            .addComponent(btnTimKhachHang))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtSoHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
-                            .addComponent(cbbKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbbKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15)
+                            .addComponent(txtGhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel6)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -420,9 +403,9 @@ public class HoaDonBanHang extends javax.swing.JFrame {
 
         txtRepay.setEditable(false);
 
-        txtGuest.addCaretListener(new javax.swing.event.CaretListener() {
+        txtPay.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                txtGuestCaretUpdate(evt);
+                txtPayCaretUpdate(evt);
             }
         });
 
@@ -497,13 +480,12 @@ public class HoaDonBanHang extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlTTHoaDonLayout.createSequentialGroup()
-                                .addComponent(txtGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPay, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel14)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtRepay, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
+                                .addComponent(txtRepay))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTTHoaDonLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2)
                                 .addGap(57, 57, 57)
                                 .addComponent(btnThanhToan)))))
@@ -532,7 +514,7 @@ public class HoaDonBanHang extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addComponent(txtRepay, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
-                    .addComponent(txtGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPay, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -707,17 +689,15 @@ public class HoaDonBanHang extends javax.swing.JFrame {
     }
 
     private void cbbKHItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbKHItemStateChanged
-        if (cbbKH.getItemCount() > 0) {
+        if (cbbKH.getItemCount() > 0) {//ham nay co tac dung hien thi len txtDienThoai, txtEmail, txtGhiChu khi chon trong cbb
             MyCombobox cbb = (MyCombobox) cbbKH.getSelectedItem();
             KhachHang kh = BLLKhachHang.GetKHByMaKH(cbb.Value.toString());
             if (kh != null) {
-
                 txtDienThoai.setText(kh.getDienthoai());
                 txtEmail.setText(kh.getGmail());
                 txtGhiChu.setText(kh.getGhichu());
             }
         }
-
     }//GEN-LAST:event_cbbKHItemStateChanged
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
@@ -728,7 +708,7 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         HoaDon hd = new HoaDon();
         hd.setSoHoaDon(txtSoHoaDon.getText());
         hd.setNgayTao(ChuyenDoi.LayNgay(txtNgayTao.getText()));
-        hd.setMaNV(Integer.parseInt(txtNhanvien.getText()));
+        hd.setMaNV(Integer.parseInt(txtNhanVien.getText()));
         MyCombobox cbb = (MyCombobox) cbbKH.getSelectedItem();
         hd.setMaKH(Integer.parseInt(cbb.Value.toString()));
         hd.setTongTien(ChuyenDoi.ChuyenTien(txtTongTien.getText()));
@@ -771,7 +751,7 @@ public class HoaDonBanHang extends javax.swing.JFrame {
 
     private void TaoMoiHD() {
         txtSoHoaDon.setText(SoHoaDon());
-        txtGuest.setText("");
+        txtPay.setText("");
         DefaultTableModel tbModel = (DefaultTableModel) tblCTHD.getModel();
 
         tbModel.setRowCount(0);
@@ -786,24 +766,24 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         BLLKhachHang.DoDuLieuVaoCBBKhachHang(cbbKH, keyword);
     }//GEN-LAST:event_txtTimKhachHangKeyReleased
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnTimKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKhachHangActionPerformed
         new QLKhachHang().setVisible(true);
         //Đổ lại dữ liệu tất cả cbb khách hàng
         String keyword = "";
         BLLKhachHang.DoDuLieuVaoCBBKhachHang(cbbKH, keyword);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnTimKhachHangActionPerformed
 
-    private void txtGuestCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtGuestCaretUpdate
+    private void txtPayCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtPayCaretUpdate
         // TODO add your handling code here:
         int Repay;
         //tính Discount
         while (true) {
-            if (txtGuest.getText().trim().equals("")) {
+            if (txtPay.getText().trim().equals("")) {
                 lbLoiGia.setText("Khách hàng chưa đưa tiền.");
                 txtRepay.setText("0");
                 btnThanhToan.setEnabled(false);
                 return;
-            } else if (!txtGuest.getText().trim().matches("\\d+")) {
+            } else if (!txtPay.getText().trim().matches("\\d+")) {
                 lbLoiGia.setText("Tiền có dạng số.");
                 txtRepay.setText("0");
                 btnThanhToan.setEnabled(false);
@@ -815,20 +795,20 @@ public class HoaDonBanHang extends javax.swing.JFrame {
             }
         }
         String total = txtTongTien.getText().replaceAll(",", "");
-        Repay = Integer.parseInt(txtGuest.getText()) - Integer.parseInt(total);
+        Repay = Integer.parseInt(txtPay.getText()) - Integer.parseInt(total);
         txtRepay.setText(formatter.format(Repay));
         if (Repay < 0) {
             lbLoiGia.setText("Khách hàng chưa đưa đủ tiền.");
             txtRepay.setText("0");
             btnThanhToan.setEnabled(false);
-        } else if (Integer.parseInt(txtGuest.getText()) == 0) {
+        } else if (Integer.parseInt(txtPay.getText()) == 0) {
             btnThanhToan.setEnabled(false);
             txtRepay.setText("0");
         } else {
             lbLoiGia.setText("");
             btnThanhToan.setEnabled(true);
         }
-    }//GEN-LAST:event_txtGuestCaretUpdate
+    }//GEN-LAST:event_txtPayCaretUpdate
 
     private void cbbLoaiSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbLoaiSPActionPerformed
         // TODO add your handling code here:
@@ -920,16 +900,14 @@ public class HoaDonBanHang extends javax.swing.JFrame {
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnTaoMoi;
     private javax.swing.JButton btnThanhToan;
+    private javax.swing.JButton btnTimKhachHang;
     private javax.swing.JComboBox<String> cbbKH;
     private javax.swing.JComboBox<String> cbbLoaiSP;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
@@ -955,9 +933,9 @@ public class HoaDonBanHang extends javax.swing.JFrame {
     private javax.swing.JTextField txtDienThoai;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtGhiChu;
-    private javax.swing.JTextField txtGuest;
     private javax.swing.JTextField txtNgayTao;
-    private javax.swing.JTextField txtNhanvien;
+    private javax.swing.JTextField txtNhanVien;
+    private javax.swing.JTextField txtPay;
     private javax.swing.JTextField txtRepay;
     private javax.swing.JTextField txtSoHoaDon;
     private javax.swing.JTextField txtTimKhachHang;
