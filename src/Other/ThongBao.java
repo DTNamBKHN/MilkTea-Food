@@ -8,10 +8,6 @@ package Other;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Tuan Nguyen
- */
 public class ThongBao {
     public static void ThongBao(String noiDung, String tieuDe){
         JOptionPane.showMessageDialog(new JFrame(), noiDung, tieuDe, 

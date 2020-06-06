@@ -99,20 +99,17 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         tblCTHD = new javax.swing.JTable();
         pnlTTHoaDon = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtSaleOff = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtSaleOffAmount = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txtRepay = new javax.swing.JTextField();
         txtPay = new javax.swing.JTextField();
         txtTongTien = new javax.swing.JTextField();
         btnThanhToan = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnThongKe = new javax.swing.JButton();
         btnTaoMoi = new javax.swing.JButton();
         lbLoiGia = new javax.swing.JLabel();
         btnRemove = new javax.swing.JButton();
@@ -387,12 +384,6 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 102, 204));
         jLabel11.setText("GIẢM TIỀN");
 
-        jLabel9.setText("GHI CHÚ CỦA KHÁCH");
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
-
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 153, 0));
         jLabel12.setText("KHÁCH TRẢ");
@@ -417,11 +408,11 @@ public class HoaDonBanHang extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/thongke.png"))); // NOI18N
-        jButton2.setText("THỐNG KÊ HÓA ĐƠN");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/thongke.png"))); // NOI18N
+        btnThongKe.setText("THỐNG KÊ HÓA ĐƠN");
+        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnThongKeActionPerformed(evt);
             }
         });
 
@@ -452,19 +443,15 @@ public class HoaDonBanHang extends javax.swing.JFrame {
             pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTTHoaDonLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlTTHoaDonLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(26, 26, 26)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSaleOff, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel11)
-                        .addGap(9, 9, 9)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel9)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3))
+                        .addComponent(txtSaleOffAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlTTHoaDonLayout.createSequentialGroup()
                         .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnlTTHoaDonLayout.createSequentialGroup()
@@ -484,9 +471,9 @@ public class HoaDonBanHang extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel14)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtRepay))
+                                .addComponent(txtRepay, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTTHoaDonLayout.createSequentialGroup()
-                                .addComponent(jButton2)
+                                .addComponent(btnThongKe)
                                 .addGap(57, 57, 57)
                                 .addComponent(btnThanhToan)))))
                 .addGap(20, 20, 20))
@@ -500,14 +487,11 @@ public class HoaDonBanHang extends javax.swing.JFrame {
             pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlTTHoaDonLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel11)
-                        .addComponent(jLabel9))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSaleOff, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel11)
+                    .addComponent(txtSaleOffAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -521,7 +505,7 @@ public class HoaDonBanHang extends javax.swing.JFrame {
                     .addComponent(btnThanhToan, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
                     .addComponent(btnTaoMoi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(pnlTTHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlTTHoaDonLayout.createSequentialGroup()
@@ -814,10 +798,10 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbbLoaiSPActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
         // TODO add your handling code here:
         new CTHoaDon().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnThongKeActionPerformed
 
     private void txtTimTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimTenActionPerformed
         // TODO add your handling code here:
@@ -900,10 +884,10 @@ public class HoaDonBanHang extends javax.swing.JFrame {
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnTaoMoi;
     private javax.swing.JButton btnThanhToan;
+    private javax.swing.JButton btnThongKe;
     private javax.swing.JButton btnTimKhachHang;
     private javax.swing.JComboBox<String> cbbKH;
     private javax.swing.JComboBox<String> cbbLoaiSP;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -917,13 +901,8 @@ public class HoaDonBanHang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lbLoiGia;
     private javax.swing.JPanel pnlHoaDon;
     private javax.swing.JPanel pnlSanPham;
@@ -937,6 +916,8 @@ public class HoaDonBanHang extends javax.swing.JFrame {
     private javax.swing.JTextField txtNhanVien;
     private javax.swing.JTextField txtPay;
     private javax.swing.JTextField txtRepay;
+    private javax.swing.JTextField txtSaleOff;
+    private javax.swing.JTextField txtSaleOffAmount;
     private javax.swing.JTextField txtSoHoaDon;
     private javax.swing.JTextField txtTimKhachHang;
     private javax.swing.JTextField txtTimTen;
