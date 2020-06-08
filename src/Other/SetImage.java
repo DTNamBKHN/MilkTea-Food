@@ -16,10 +16,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 
-/**
- *
- * @author Tung
- */
 public class SetImage {
     public void setImageButton(JButton button, String fileName) {
         try {
@@ -67,5 +63,4 @@ public class SetImage {
             e.printStackTrace();
         }
     }
-
 }

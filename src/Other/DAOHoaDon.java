@@ -12,10 +12,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Tuan Nguyen
- */
 public class DAOHoaDon {
 
     public static ResultSet CountSoHoaDon(String SoHoaDon) {

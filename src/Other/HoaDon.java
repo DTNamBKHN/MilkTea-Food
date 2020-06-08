@@ -7,10 +7,6 @@ package Other;
 
 import java.util.Date;
 
-/**
- *
- * @author Tuan Nguyen
- */
 public class HoaDon {
     int MaHD;
     String SoHoaDon;

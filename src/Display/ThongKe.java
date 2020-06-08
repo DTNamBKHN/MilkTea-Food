@@ -304,8 +304,6 @@ public class ThongKe extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         tabs = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        cboMaDonHang = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTKHD = new javax.swing.JTable();
@@ -313,7 +311,7 @@ public class ThongKe extends javax.swing.JFrame {
         btnLamMoi = new javax.swing.JButton();
         txtMaNV = new javax.swing.JTextField();
         dcChooseDay = new com.toedter.calendar.JDateChooser();
-        cboNgayThangNam = new javax.swing.JComboBox<>();
+        cboNgayThangNam = new javax.swing.JComboBox<String>();
         jLabel5 = new javax.swing.JLabel();
         jPanelQLDT = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -323,7 +321,7 @@ public class ThongKe extends javax.swing.JFrame {
         btnLMoi = new javax.swing.JButton();
         lblTong = new javax.swing.JLabel();
         btnTKiem2 = new javax.swing.JButton();
-        cboNamNgayThang2 = new javax.swing.JComboBox<>();
+        cboNamNgayThang2 = new javax.swing.JComboBox<String>();
         dcChooseDay2 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -334,20 +332,6 @@ public class ThongKe extends javax.swing.JFrame {
         jLabel1.setText("TỔNG HỢP & THỐNG KÊ");
 
         tabs.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setText("MÃ ĐƠN HÀNG:");
-
-        cboMaDonHang.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cboMaDonHangItemStateChanged(evt);
-            }
-        });
-        cboMaDonHang.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cboMaDonHangMouseClicked(evt);
-            }
-        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("MÃ NHÂN VIÊN:");
@@ -398,7 +382,7 @@ public class ThongKe extends javax.swing.JFrame {
             }
         });
 
-        cboNgayThangNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Năm", "Ngày", "Tháng" }));
+        cboNgayThangNam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Năm", "Ngày", "Tháng" }));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("THỐNG KÊ THEO NGÀY / THÁNG / NĂM");
@@ -411,27 +395,23 @@ public class ThongKe extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(394, 394, 394)
+                .addGap(497, 497, 497)
                 .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107)
+                .addGap(108, 108, 108)
                 .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cboMaDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
+                .addGap(157, 157, 157)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addGap(125, 125, 125)
                 .addComponent(dcChooseDay, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cboNgayThangNam, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(110, 110, 110))
+                .addGap(220, 220, 220))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -441,8 +421,6 @@ public class ThongKe extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(dcChooseDay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(cboMaDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
                             .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -505,7 +483,7 @@ public class ThongKe extends javax.swing.JFrame {
             }
         });
 
-        cboNamNgayThang2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Năm", "Ngày", "Tháng" }));
+        cboNamNgayThang2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Năm", "Ngày", "Tháng" }));
 
         javax.swing.GroupLayout jPanelQLDTLayout = new javax.swing.GroupLayout(jPanelQLDT);
         jPanelQLDT.setLayout(jPanelQLDTLayout);
@@ -611,7 +589,6 @@ public class ThongKe extends javax.swing.JFrame {
             List<HoaDon> list = hd.selectByCbo(value);
 
             try {
-
                 for (HoaDon cd : list) {
                     Object[] row = {
                         cd.getMaHD(),
@@ -633,7 +610,6 @@ public class ThongKe extends javax.swing.JFrame {
             List<HoaDon> list = hd.selectByKeyword(keyword);
 
             try {
-
                 for (HoaDon cd : list) {
                     Object[] row = {
                         cd.getMaHD(),
@@ -654,23 +630,11 @@ public class ThongKe extends javax.swing.JFrame {
         if (cboNgayThangNam.getSelectedItem() != null) {
            locNgayThangNam();
             }
-
-
     }//GEN-LAST:event_btnTimKiemActionPerformed
-
-    private void cboMaDonHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboMaDonHangMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cboMaDonHangMouseClicked
-
-    private void cboMaDonHangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboMaDonHangItemStateChanged
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_cboMaDonHangItemStateChanged
 
     private void btnTKiem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKiem2ActionPerformed
         locNgayThangNam2();
         sum();
-
         lblTong.setText(ChuyenDoi.DinhDangTien(sum()) + "VND");
     }//GEN-LAST:event_btnTKiem2ActionPerformed
 
@@ -697,14 +661,12 @@ public class ThongKe extends javax.swing.JFrame {
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnTKiem2;
     private javax.swing.JButton btnTimKiem;
-    private javax.swing.JComboBox<String> cboMaDonHang;
     private javax.swing.JComboBox<String> cboNamNgayThang2;
     private javax.swing.JComboBox<String> cboNgayThangNam;
     private com.toedter.calendar.JDateChooser dcChooseDay;
     private com.toedter.calendar.JDateChooser dcChooseDay2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;

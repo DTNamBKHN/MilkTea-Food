@@ -11,10 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Tuan Nguyen
- */
 public class DAOChiTietHoaDon {
     public static int Them(ChiTietHoaDon cthd){
         String sql = "INSERT INTO [dbo].[ChiTietHoaDon]  " +
