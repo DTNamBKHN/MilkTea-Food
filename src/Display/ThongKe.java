@@ -51,12 +51,12 @@ public class ThongKe extends javax.swing.JFrame {
         load();
         load2();
 //       fillComboBoxHD();
-        fillComboBox();
-        cboMaDonHang.setSelectedIndex(-1);
-        cboNgayThangNam.setSelectedIndex(-1);
-        cboNamNgayThang2.setSelectedIndex(-1);
-        lblTong.setText(ChuyenDoi.DinhDangTien(sum()) + "VND");
-        String date = sdf.format(dcChooseDay.getDate());
+//        fillComboBox();
+//        cboMaDonHang.setSelectedIndex(-1);
+//        cboNgayThangNam.setSelectedIndex(-1);
+//        cboNamNgayThang2.setSelectedIndex(-1);
+//        lblTong.setText(ChuyenDoi.DinhDangTien(sum()) + "VND");
+//        String date = sdf.format(dcChooseDay.getDate());
 
     }
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
