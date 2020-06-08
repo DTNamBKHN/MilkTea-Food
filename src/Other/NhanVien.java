@@ -5,9 +5,17 @@
  */
 package Other;
 
+/**
+ *
+ * @author Anh Tuấn
+ */
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ *
+ * @author Admin
+ */
 public class NhanVien implements Serializable{
      private String maNV; 
      private String matKhau;

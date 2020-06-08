@@ -8,6 +8,10 @@ package Other;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ *
+ * @author Anh Tuấn
+ */
 public class SanPham implements  Serializable{
 
     private String LoaiSP;

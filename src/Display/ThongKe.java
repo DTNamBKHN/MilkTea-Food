@@ -26,13 +26,12 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 import Display.CTHoaDon;
+import Other.MyCombobox;
+import bll.BLLHoaDon;
 
-/**
- *
- * @author trinhtrinh
- */
 public class ThongKe extends javax.swing.JFrame {
- public static int tabIndex;
+
+    public static int tabIndex;
     DAOHoaDon hd = new DAOHoaDon();
     int index = 0;
     String dburl = "jdbc:sqlserver://localhost;databaseName=Milk_Tea&FoodS;user=java3;password=java";
@@ -45,18 +44,22 @@ public class ThongKe extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         tabs.setSelectedIndex(tabIndex);
-        if(tabIndex==0) tabs.setSelectedIndex(tabIndex);
-        if(tabIndex==1) tabs.setSelectedIndex(tabIndex);
+        if (tabIndex == 0) {
+            tabs.setSelectedIndex(tabIndex);
+        }
+        if (tabIndex == 1) {
+            tabs.setSelectedIndex(tabIndex);
+        }
         setLocationRelativeTo(this);
         load();
         load2();
-//       fillComboBoxHD();
-//        fillComboBox();
-//        cboMaDonHang.setSelectedIndex(-1);
-//        cboNgayThangNam.setSelectedIndex(-1);
-//        cboNamNgayThang2.setSelectedIndex(-1);
-//        lblTong.setText(ChuyenDoi.DinhDangTien(sum()) + "VND");
-//        String date = sdf.format(dcChooseDay.getDate());
+        fillComboBoxHD();
+        //fillComboBox();
+        cboMaDonHang.setSelectedIndex(-1);
+        cboNgayThangNam.setSelectedIndex(-1);
+        cboNamNgayThang2.setSelectedIndex(-1);
+        lblTong.setText(ChuyenDoi.DinhDangTien(sum()) + "VND");
+        String date = sdf.format(dcChooseDay.getDate());
 
     }
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
@@ -71,7 +74,6 @@ public class ThongKe extends javax.swing.JFrame {
         List<HoaDon> list = hd.select();
 
         try {
-
             for (HoaDon cd : list) {
                 Object[] row = {
                     cd.getMaHD(),
@@ -139,25 +141,27 @@ public class ThongKe extends javax.swing.JFrame {
     void selectComboBox() {
         HoaDon hoaDon = (HoaDon) cboMaDonHang.getSelectedItem();
     }
-//    void fillComboBoxHD() {
-//        DefaultComboBoxModel model = (DefaultComboBoxModel) cboMaDonHang.getModel();
-//        model.removeAllElements();
-//
-//        try {
-//            List<HoaDon> list = hd.select();
-//            for (HoaDon cd : list) {
-//                model.addElement(cd);
-//            }
-//        } catch (Exception e) {
-//            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
-//        }
-//    }
+
+    void fillComboBoxHD() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboMaDonHang.getModel();
+        model.removeAllElements();
+
+        try {
+            List<HoaDon> list = hd.select();
+            for (HoaDon cd : list) {
+                MyCombobox mb = new MyCombobox(cd.getSoHoaDon(), cd.getMaHD());
+                model.addElement(mb);
+            }
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    }
 
     void locNgayThangNam() {
-         DefaultTableModel model = (DefaultTableModel) tblTKHD.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblTKHD.getModel();
         model.setRowCount(0);
         if (cboNgayThangNam.getSelectedIndex() == 0) {
-             String year = yr.format(dcChooseDay.getDate());
+            String year = yr.format(dcChooseDay.getDate());
             List<HoaDon> list = hd.selectByYear(year);
             try {
                 model.setRowCount(0);
@@ -178,7 +182,7 @@ public class ThongKe extends javax.swing.JFrame {
             }
         } else if (cboNgayThangNam.getSelectedIndex() == 1) {
             String date = sdf.format(dcChooseDay.getDate());
-            
+
             List<HoaDon> list = hd.selectByDate(date);
             try {
                 model.setRowCount(0);
@@ -197,7 +201,7 @@ public class ThongKe extends javax.swing.JFrame {
             } catch (Exception e) {
                 DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
             }
-        } else if(cboNgayThangNam.getSelectedIndex() == 2) {
+        } else if (cboNgayThangNam.getSelectedIndex() == 2) {
             String month = mth.format(dcChooseDay.getDate());
             String year = yr.format(dcChooseDay.getDate());
             List<HoaDon> list = hd.selectByMONTH(month, year);
@@ -220,59 +224,61 @@ public class ThongKe extends javax.swing.JFrame {
             }
         }
     }
+
     void locNgayThangNam2() {
-         DefaultTableModel model2 = (DefaultTableModel) tblTKDT.getModel();
+        DefaultTableModel model2 = (DefaultTableModel) tblTKDT.getModel();
         model2.setRowCount(0);
         if (cboNamNgayThang2.getSelectedIndex() == 0) {
-             String year = yr.format(dcChooseDay2.getDate());
-           List<HoaDon> list2 = hd.selectByDate(year);
+            String year = yr.format(dcChooseDay2.getDate());
+            List<HoaDon> list2 = hd.selectByDate(year);
 
-        try {
+            try {
 
-            for (HoaDon hd : list2) {
-                Object[] row = {
-                    hd.getMaHD(),
-                    ChuyenDoi.DinhDangNgay(hd.getNgayTao()),
-                    hd.getTongTien(),};
-                model2.addRow(row);
+                for (HoaDon hd : list2) {
+                    Object[] row = {
+                        hd.getMaHD(),
+                        ChuyenDoi.DinhDangNgay(hd.getNgayTao()),
+                        hd.getTongTien(),};
+                    model2.addRow(row);
+                }
+            } catch (Exception e) {
+                DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
             }
-        } catch (Exception e) {
-            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
-        }
         } else if (cboNamNgayThang2.getSelectedIndex() == 1) {
             String date = sdf.format(dcChooseDay2.getDate());
-            
-            List<HoaDon> list2 = hd.selectByDate(date);
-              try {
 
-            for (HoaDon hd : list2) {
-                Object[] row = {
-                    hd.getMaHD(),
-                    ChuyenDoi.DinhDangNgay(hd.getNgayTao()),
-                    hd.getTongTien(),};
-                model2.addRow(row);
+            List<HoaDon> list2 = hd.selectByDate(date);
+            try {
+
+                for (HoaDon hd : list2) {
+                    Object[] row = {
+                        hd.getMaHD(),
+                        ChuyenDoi.DinhDangNgay(hd.getNgayTao()),
+                        hd.getTongTien(),};
+                    model2.addRow(row);
+                }
+            } catch (Exception e) {
+                DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
             }
-        } catch (Exception e) {
-            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
-        }
-        } else if(cboNamNgayThang2.getSelectedIndex() == 2) {
+        } else if (cboNamNgayThang2.getSelectedIndex() == 2) {
             String month = mth.format(dcChooseDay2.getDate());
             String year = yr.format(dcChooseDay2.getDate());
             List<HoaDon> list2 = hd.selectByMONTH(month, year);
             try {
 
-            for (HoaDon hd : list2) {
-                Object[] row = {
-                    hd.getMaHD(),
-                    ChuyenDoi.DinhDangNgay(hd.getNgayTao()),
-                    hd.getTongTien(),};
-                model2.addRow(row);
+                for (HoaDon hd : list2) {
+                    Object[] row = {
+                        hd.getMaHD(),
+                        ChuyenDoi.DinhDangNgay(hd.getNgayTao()),
+                        hd.getTongTien(),};
+                    model2.addRow(row);
+                }
+            } catch (Exception e) {
+                DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
             }
-        } catch (Exception e) {
-            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
-        }
         }
     }
+
     void fillComboBox() {
         try {
             Connection conn = DriverManager.getConnection(dburl);
@@ -283,7 +289,6 @@ public class ThongKe extends javax.swing.JFrame {
                 String MaDH = RS.getString(2);
                 cboMaDonHang.addItem(MaDH);
                 HoaDonBanHang cd = new HoaDonBanHang();
-
             }
             conn.close();
 
@@ -304,6 +309,8 @@ public class ThongKe extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         tabs = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        cboMaDonHang = new javax.swing.JComboBox<String>();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTKHD = new javax.swing.JTable();
@@ -332,6 +339,20 @@ public class ThongKe extends javax.swing.JFrame {
         jLabel1.setText("TỔNG HỢP & THỐNG KÊ");
 
         tabs.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("MÃ ĐƠN HÀNG:");
+
+        cboMaDonHang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboMaDonHangItemStateChanged(evt);
+            }
+        });
+        cboMaDonHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboMaDonHangMouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("MÃ NHÂN VIÊN:");
@@ -395,23 +416,27 @@ public class ThongKe extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(497, 497, 497)
+                .addGap(394, 394, 394)
                 .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108)
+                .addGap(107, 107, 107)
                 .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(157, 157, 157)
+                .addGap(42, 42, 42)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cboMaDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(125, 125, 125)
+                .addGap(67, 67, 67)
                 .addComponent(dcChooseDay, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cboNgayThangNam, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(220, 220, 220))
+                .addGap(110, 110, 110))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -421,6 +446,8 @@ public class ThongKe extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(dcChooseDay, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(cboMaDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
                             .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -565,19 +592,19 @@ public class ThongKe extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLMoiActionPerformed
-       cboNamNgayThang2.setSelectedIndex(-1); 
+        cboNamNgayThang2.setSelectedIndex(-1);
         load2();
         lblTong.setText(ChuyenDoi.DinhDangTien(sum()) + "VND");
     }//GEN-LAST:event_btnLMoiActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         txtMaNV.setText("");
-       
+
         cboMaDonHang.removeAllItems();
-        fillComboBox();
+        fillComboBoxHD();
         cboMaDonHang.setSelectedIndex(-1);
         cboNgayThangNam.setSelectedIndex(-1);
-        
+
         load();
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
@@ -585,8 +612,8 @@ public class ThongKe extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblTKHD.getModel();
         model.setRowCount(0);
         if (cboMaDonHang.getSelectedItem() != null) {
-            String value = (String) cboMaDonHang.getSelectedItem();
-            List<HoaDon> list = hd.selectByCbo(value);
+            MyCombobox item = (MyCombobox) cboMaDonHang.getSelectedItem();
+            List<HoaDon> list = hd.selectByCbo((String) item.Text);
 
             try {
                 for (HoaDon cd : list) {
@@ -610,6 +637,7 @@ public class ThongKe extends javax.swing.JFrame {
             List<HoaDon> list = hd.selectByKeyword(keyword);
 
             try {
+
                 for (HoaDon cd : list) {
                     Object[] row = {
                         cd.getMaHD(),
@@ -626,27 +654,38 @@ public class ThongKe extends javax.swing.JFrame {
                 DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
             }
 
-        }  
+        }
         if (cboNgayThangNam.getSelectedItem() != null) {
-           locNgayThangNam();
-            }
+            locNgayThangNam();
+        }
+
+
     }//GEN-LAST:event_btnTimKiemActionPerformed
+
+    private void cboMaDonHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboMaDonHangMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboMaDonHangMouseClicked
+
+    private void cboMaDonHangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboMaDonHangItemStateChanged
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_cboMaDonHangItemStateChanged
 
     private void btnTKiem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKiem2ActionPerformed
         locNgayThangNam2();
         sum();
+
         lblTong.setText(ChuyenDoi.DinhDangTien(sum()) + "VND");
     }//GEN-LAST:event_btnTKiem2ActionPerformed
 
     private void tblTKHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTKHDMouseClicked
-    if (evt.getClickCount() >= 2) {
-           CTHoaDon myJFrame = new CTHoaDon();
-                    myJFrame .setVisible(true);
+        if (evt.getClickCount() >= 2) {
+            CTHoaDon myJFrame = new CTHoaDon();
+            myJFrame.setVisible(true);
         }
     }//GEN-LAST:event_tblTKHDMouseClicked
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
-        // TODO add your handling code here:
-
+        BLLHoaDon.DoDuLieuVaocboMaDonHang(cboMaDonHang);
         this.load();
     }
 
@@ -661,12 +700,14 @@ public class ThongKe extends javax.swing.JFrame {
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnTKiem2;
     private javax.swing.JButton btnTimKiem;
+    private javax.swing.JComboBox<String> cboMaDonHang;
     private javax.swing.JComboBox<String> cboNamNgayThang2;
     private javax.swing.JComboBox<String> cboNgayThangNam;
     private com.toedter.calendar.JDateChooser dcChooseDay;
     private com.toedter.calendar.JDateChooser dcChooseDay2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;

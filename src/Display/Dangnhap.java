@@ -115,7 +115,7 @@ public class Dangnhap extends javax.swing.JDialog {
         imgUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/user.png"))); // NOI18N
         imgUser.setText("Tên đăng nhập:");
 
-        txtMaNV.setText("2");
+        txtMaNV.setText("1");
         txtMaNV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMaNVActionPerformed(evt);

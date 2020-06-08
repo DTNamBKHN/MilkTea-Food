@@ -5,6 +5,10 @@
  */
 package Other;
 
+/**
+ *
+ * @author Tuan Nguyen
+ */
 public class ChiTietHoaDon {
     int MaChiTietHD;
     int MaHD;

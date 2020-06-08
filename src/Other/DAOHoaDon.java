@@ -14,6 +14,11 @@ import java.util.List;
 
 public class DAOHoaDon {
 
+    public static ResultSet GetAll() {//ham nay chua can dung
+        String sql = "SELECT * FROM LoaiSanPham";
+        return JdbcHelper.executeQuery(sql);
+    }
+
     public static ResultSet CountSoHoaDon(String SoHoaDon) {
         String sql = "select Count(*) from hoadon where SoHoaDon like N'%" + SoHoaDon + "%'";
         return JdbcHelper.executeQuery(sql);
@@ -70,7 +75,7 @@ public class DAOHoaDon {
         String sql2 = "AND MONTH(NgayTaoHD) LIKE ";
         return select(sql, "%" + year + "%", "%" + month + "%");
     }
-    
+
     public List<HoaDon> selectByYear(String year) {
         String sql = "SELECT * FROM HoaDon WHERE YEAR(NgayTaoHD) LIKE ?";
         return select(sql, "%" + year + "%");

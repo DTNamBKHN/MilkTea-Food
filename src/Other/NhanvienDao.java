@@ -5,12 +5,20 @@
  */
 package Other;
 
+/**
+ *
+ * @author Anh Tuấn
+ */
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author Admin
+ */
 public class NhanvienDao {
 
     public void insert(NhanVien model) {
@@ -48,6 +56,7 @@ public class NhanvienDao {
         JdbcHelper.executeUpdate(sql,
                 model.getMatkhau(),
                 model.getMaNV());
+
     }
 
     public void delete(String MaNV) {

@@ -7,13 +7,16 @@ package Other;
 
 import java.io.Serializable;
 
+/**
+ *
+ * @author Anh Tuấn
+ */
 public class Doipass implements Serializable {
-
     String matkhau;
     String MaNV;
-
-    public Doipass() {
-    }
+    
+     
+   public Doipass(){};
 
     public Doipass(String matkhau, String MaNV) {
         this.matkhau = matkhau;
@@ -35,4 +38,7 @@ public class Doipass implements Serializable {
     public void setMaNV(String MaNV) {
         this.MaNV = MaNV;
     }
+
+    
+    
 }
