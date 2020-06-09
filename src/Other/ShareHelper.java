@@ -64,5 +64,4 @@ public class ShareHelper {
      */ public static boolean authenticated() {
         return ShareHelper.USER != null;
     }
-
 }

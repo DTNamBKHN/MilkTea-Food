@@ -3,20 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/D:/THANHNAM/Ky_6/BT-OOP/ProjectOop/Back_up/MilkTea-Food/src/Display/ThongKe.java</file>
-=======
-            <file>file:/D:/THANHNAM/Ky_6/BT-OOP/ProjectOop/Back_up/MilkTea-Food/src/bll/BLLLoaiSanPham.java</file>
-            <file>file:/D:/THANHNAM/Ky_6/BT-OOP/ProjectOop/Back_up/MilkTea-Food/src/bll/BLLKhachHang.java</file>
-            <file>file:/D:/THANHNAM/Ky_6/BT-OOP/ProjectOop/Back_up/MilkTea-Food/src/bll/BLLHoaDon.java</file>
-            <file>file:/D:/THANHNAM/Ky_6/BT-OOP/ProjectOop/Back_up/MilkTea-Food/src/Other/DAOHoaDon.java</file>
-            <file>file:/D:/THANHNAM/Ky_6/BT-OOP/ProjectOop/Back_up/MilkTea-Food/src/Other/KhachHangDao.java</file>
-            <file>file:/D:/THANHNAM/Ky_6/BT-OOP/ProjectOop/Back_up/MilkTea-Food/src/Other/MyCombobox.java</file>
-            <file>file:/D:/THANHNAM/Ky_6/BT-OOP/ProjectOop/Back_up/MilkTea-Food/src/Other/LoaiSanPhamDao.java</file>
-            <file>file:/D:/THANHNAM/Ky_6/BT-OOP/ProjectOop/Back_up/MilkTea-Food/src/bll/BLLSanPham.java</file>
-            <file>file:/D:/THANHNAM/Ky_6/BT-OOP/ProjectOop/Back_up/MilkTea-Food/src/Other/JdbcHelper.java</file>
->>>>>>> parent of fe6800c... delete Combobox Madonhang in ThongKe.java
+            <file>file:/D:/THANHNAM/Ky_6/BT-OOP/ProjectOop/Back_up/MilkTea-Food/src/Other/DialogHelper.java</file>
+            <file>file:/D:/THANHNAM/Ky_6/BT-OOP/ProjectOop/Back_up/MilkTea-Food/src/Display/AdminForm.java</file>
+            <file>file:/D:/THANHNAM/Ky_6/BT-OOP/ProjectOop/Back_up/MilkTea-Food/src/Display/ChaoJDialog.java</file>
+            <file>file:/D:/THANHNAM/Ky_6/BT-OOP/ProjectOop/Back_up/MilkTea-Food/src/Other/ShareHelper.java</file>
             <file>file:/D:/THANHNAM/Ky_6/BT-OOP/ProjectOop/Back_up/MilkTea-Food/src/Display/HoaDonBanHang.java</file>
+            <file>file:/D:/THANHNAM/Ky_6/BT-OOP/ProjectOop/Back_up/MilkTea-Food/src/Display/Dangnhap.java</file>
         </group>
     </open-files>
 </project-private>

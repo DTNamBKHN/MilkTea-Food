@@ -13,10 +13,7 @@ import java.sql.ResultSet;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
-/**
- *
- * @author trinhtrinh
- */
+
 public class CTHoaDon extends javax.swing.JFrame {
 DAOChiTietHoaDon hd = new DAOChiTietHoaDon();
     String dburl = "jdbc:sqlserver://localhost;databaseName=Milk_Tea&FoodS;user=java3;password=java";
@@ -67,8 +64,16 @@ void load() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnBarChart = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCTHD2 = new javax.swing.JTable();
+
+        btnBarChart.setText("Bar Chart");
+        btnBarChart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBarChartActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CHI TIẾT HÓA ĐƠN");
@@ -95,11 +100,16 @@ void load() {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                .addGap(55, 55, 55))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 150, Short.MAX_VALUE))
         );
 
         pack();
@@ -109,6 +119,10 @@ void load() {
         // TODO add your handling code here:
         this.load();
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnBarChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarChartActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBarChartActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,6 +161,7 @@ void load() {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBarChart;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblCTHD2;
     // End of variables declaration//GEN-END:variables

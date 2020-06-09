@@ -69,8 +69,6 @@ public class AdminForm extends javax.swing.JFrame implements Runnable {
         new SetImage().setImageButton(btnProduct, "src//Image//Product.png");
         btnEmp.setSize(190, 190);
         new SetImage().setImageButton(btnEmp, "src//Image//teamwork.png");
-        btnAbout.setSize(190, 190);
-        new SetImage().setImageButton(btnAbout, "src//Image//about.png");
         btnThongKe.setSize(190, 190);
         new SetImage().setImageButton(btnThongKe, "src//Image//chart.png");
         btnOrder.setSize(190, 190);
@@ -155,7 +153,7 @@ public class AdminForm extends javax.swing.JFrame implements Runnable {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel(){
-            ImageIcon icon = new ImageIcon("src//Image//M.png");
+            ImageIcon icon = new ImageIcon("src//Image//header.png");
             public void paintComponent(Graphics g){
                 Dimension d = getSize();
                 g.drawImage(icon.getImage(), 0, 0, d.width, d.height, null);
@@ -167,14 +165,12 @@ public class AdminForm extends javax.swing.JFrame implements Runnable {
         jPanel2 = new javax.swing.JPanel();
         btnEmp = new javax.swing.JButton();
         btnProduct = new javax.swing.JButton();
-        btnAbout = new javax.swing.JButton();
         btnThongKe = new javax.swing.JButton();
         btnCustomer = new javax.swing.JButton();
         btnOrder = new javax.swing.JButton();
         lblCustomer = new javax.swing.JLabel();
         lblPromotion = new javax.swing.JLabel();
         lblTongHopThongKe = new javax.swing.JLabel();
-        lblAbout = new javax.swing.JLabel();
         lblQLNhanVien = new javax.swing.JLabel();
         lblQLSanPham = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -246,15 +242,6 @@ public class AdminForm extends javax.swing.JFrame implements Runnable {
             }
         });
 
-        btnAbout.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnAbout.setForeground(new java.awt.Color(204, 0, 0));
-        btnAbout.setToolTipText("About");
-        btnAbout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAboutActionPerformed(evt);
-            }
-        });
-
         btnThongKe.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnThongKe.setForeground(new java.awt.Color(204, 0, 0));
         btnThongKe.setToolTipText("Tổng hợp và Thống kê");
@@ -294,10 +281,6 @@ public class AdminForm extends javax.swing.JFrame implements Runnable {
         lblTongHopThongKe.setForeground(new java.awt.Color(255, 255, 255));
         lblTongHopThongKe.setText("TỔNG HỢP VÀ THỐNG KÊ");
 
-        lblAbout.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        lblAbout.setForeground(new java.awt.Color(255, 255, 255));
-        lblAbout.setText("GIỚI THIỆU");
-
         lblQLNhanVien.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         lblQLNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         lblQLNhanVien.setText("QUẢN LÝ NHÂN VIÊN");
@@ -336,15 +319,11 @@ public class AdminForm extends javax.swing.JFrame implements Runnable {
                         .addGap(48, 48, 48)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(lblPromotion))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(102, 102, 102)
-                        .addComponent(lblAbout)))
-                .addContainerGap(891, Short.MAX_VALUE))
+                    .addComponent(lblCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(894, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,13 +341,11 @@ public class AdminForm extends javax.swing.JFrame implements Runnable {
                 .addGap(81, 81, 81)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTongHopThongKe)
-                    .addComponent(lblCustomer)
-                    .addComponent(lblAbout))
+                    .addComponent(lblCustomer))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
@@ -389,7 +366,7 @@ public class AdminForm extends javax.swing.JFrame implements Runnable {
         });
 
         lblHeThong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icon.png"))); // NOI18N
-        lblHeThong.setText("Hệ thống quản lí Milk Tea&Food");
+        lblHeThong.setText("Hệ thống quản lí quán trà sữa");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -398,7 +375,7 @@ public class AdminForm extends javax.swing.JFrame implements Runnable {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblHeThong)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1315, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1327, Short.MAX_VALUE)
                 .addComponent(txtdongho, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -527,10 +504,6 @@ public class AdminForm extends javax.swing.JFrame implements Runnable {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
-        new AboutJDialog(this, rootPaneCheckingEnabled).setVisible(true);
-    }//GEN-LAST:event_btnAboutActionPerformed
-
     private void btnEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpActionPerformed
         if (USER.isVaiTro()) {
             QLNhanVien s = new QLNhanVien();
@@ -652,7 +625,6 @@ public class AdminForm extends javax.swing.JFrame implements Runnable {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAbout;
     private javax.swing.JButton btnCustomer;
     private javax.swing.JButton btnEmp;
     private javax.swing.JButton btnOrder;
@@ -674,7 +646,6 @@ public class AdminForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JMenuItem jPlayMusic;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lblAbout;
     private javax.swing.JLabel lblCustomer;
     private javax.swing.JLabel lblHeThong;
     private javax.swing.JLabel lblPromotion;

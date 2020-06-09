@@ -82,7 +82,7 @@ public class Dangnhap extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel(){
-            ImageIcon icon = new ImageIcon("src//Image//Logo.png");
+            ImageIcon icon = new ImageIcon("src//Image//logo_login.png");
             public void paintComponent(Graphics g){
                 Dimension d = getSize();
                 g.drawImage(icon.getImage(), 0, 0, d.width, d.height, null);
@@ -101,7 +101,7 @@ public class Dangnhap extends javax.swing.JDialog {
         btnThoat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("HỆ THỐNG QUẢN LÝ MILK TEA&FOOD");
+        setTitle("HỆ THỐNG QUẢN LÝ QUÁN TRÀ SỮA");
 
         jPanel3.setPreferredSize(new java.awt.Dimension(810, 450));
 
