@@ -707,31 +707,9 @@ public class HoaDonBanHang extends javax.swing.JFrame {
         //Thêm tất cả chi tiết hóa đơn theo MaHD vừa thêm
         ThemCTHDTuTable(hd.getMaHD());
 
-        //gọi hàm xuất hóa đơn
-        XuatHoaDon(hd.getMaHD());
-
         //tạo lại hóa đơn mới
         TaoMoiHD();
-
-
     }//GEN-LAST:event_btnThanhToanActionPerformed
-
-    //Tạo hàm xuất hóa đơn
-    public void XuatHoaDon(int idhd) {
-        try {
-
-            Hashtable map = new Hashtable();
-            JasperReport report = JasperCompileManager.compileReport("src/Display/rptXuatHoaDon.jrxml");
-
-            map.put("MaHD", idhd);
-
-            JasperPrint p = JasperFillManager.fillReport(report, map, JdbcHelper.conn);
-            JasperViewer.viewReport(p, false);
-            JasperExportManager.exportReportToPdfFile(p, "test.pdf");
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
 
     private void TaoMoiHD() {
         txtSoHoaDon.setText(SoHoaDon());
