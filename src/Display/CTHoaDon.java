@@ -9,14 +9,20 @@ import Other.ChiTietHoaDon;
 import Other.DAOChiTietHoaDon;
 import Other.DialogHelper;
 import Other.HoaDon;
+import Other.MaSPAndSoLuong;
+import Other.MaSPAndSoLuongDAO;
+import Other.MyCombobox;
 import java.sql.ResultSet;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 public class CTHoaDon extends javax.swing.JFrame {
-DAOChiTietHoaDon hd = new DAOChiTietHoaDon();
+
+    DAOChiTietHoaDon hd = new DAOChiTietHoaDon();
+    MaSPAndSoLuongDAO hdThongKe = new MaSPAndSoLuongDAO();
     String dburl = "jdbc:sqlserver://localhost;databaseName=Milk_Tea&FoodS;user=java3;password=java";
+
     /**
      * Creates new form CTHoaDon
      */
@@ -26,17 +32,16 @@ DAOChiTietHoaDon hd = new DAOChiTietHoaDon();
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         load();
-       setLocationRelativeTo(this);
+        setLocationRelativeTo(this);
     }
-void load() {
 
+    void load() {
         DefaultTableModel model = (DefaultTableModel) tblCTHD2.getModel();
         model.setRowCount(0);
 
         List<ChiTietHoaDon> list = hd.select();
 
         try {
-
             for (ChiTietHoaDon cd : list) {
                 Object[] row = {
                     cd.getMaChiTietHD(),
@@ -52,7 +57,26 @@ void load() {
             e.printStackTrace();
             DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
         }
+    }
 
+    void loadSoLuong_MaSP() {
+        DefaultTableModel model = (DefaultTableModel) tblThongKe.getModel();
+        model.setRowCount(0);
+
+        List<MaSPAndSoLuong> list = hdThongKe.select();
+
+        try {
+            for (MaSPAndSoLuong cd : list) {
+                Object[] row = {
+                    cd.getMaSP(),
+                    cd.getSoLuong()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
     }
 
     /**
@@ -67,6 +91,8 @@ void load() {
         btnBarChart = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCTHD2 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblThongKe = new javax.swing.JTable();
 
         btnBarChart.setText("Bar Chart");
         btnBarChart.addActionListener(new java.awt.event.ActionListener() {
@@ -96,20 +122,31 @@ void load() {
         ));
         jScrollPane1.setViewportView(tblCTHD2);
 
+        tblThongKe.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã SP", "Số lượng"
+            }
+        ));
+        jScrollPane2.setViewportView(tblThongKe);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
-                .addGap(55, 55, 55))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(111, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 150, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -118,6 +155,7 @@ void load() {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         this.load();
+        this.loadSoLuong_MaSP();
     }//GEN-LAST:event_formWindowOpened
 
     private void btnBarChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarChartActionPerformed
@@ -155,14 +193,16 @@ void load() {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CTHoaDon().setVisible(true);
-                
+
             }
         });
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBarChart;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblCTHD2;
+    private javax.swing.JTable tblThongKe;
     // End of variables declaration//GEN-END:variables
 }

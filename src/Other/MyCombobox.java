@@ -19,4 +19,8 @@ public class MyCombobox {
     public String toString() {
         return Text.toString();
     }
+    
+    public String toValue(){
+        return Value.toString();
+    }
 }

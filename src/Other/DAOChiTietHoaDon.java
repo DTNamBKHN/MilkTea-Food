@@ -12,27 +12,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DAOChiTietHoaDon {
-    public static int Them(ChiTietHoaDon cthd){
-        String sql = "INSERT INTO [dbo].[ChiTietHoaDon]  " +
-"           ([MaHD]  " +
-"           ,[MaSP]  " +
-"           ,[SoLuong]  " +
-"           ,[ThanhTien]  " +
-"           ,[KichThuoc])  " +
-"     VALUES  " +
-"           (" + cthd.getMaHD() + 
-"           ," + cthd.getMaSP()+ 
-"           ," + cthd.getSoLuong() + 
-"           ," + cthd.getThanhTien() + 
-"           ,N'" + cthd.getKichThuoc()+ "')";
-        
+
+    public static int Them(ChiTietHoaDon cthd) {
+        String sql = "INSERT INTO [dbo].[ChiTietHoaDon]  "
+                + "           ([MaHD]  "
+                + "           ,[MaSP]  "
+                + "           ,[SoLuong]  "
+                + "           ,[ThanhTien]  "
+                + "           ,[KichThuoc])  "
+                + "     VALUES  "
+                + "           (" + cthd.getMaHD()
+                + "           ," + cthd.getMaSP()
+                + "           ," + cthd.getSoLuong()
+                + "           ," + cthd.getThanhTien()
+                + "           ,N'" + cthd.getKichThuoc() + "')";
+
         System.out.println(sql);
         return JdbcHelper.executeUpdate(sql);
     }
+
     public List<ChiTietHoaDon> select() {
         String sql = "SELECT * FROM ChiTietHoaDon";
         return select(sql);
     }
+
     private List<ChiTietHoaDon> select(String sql, Object... args) {
         List<ChiTietHoaDon> list = new ArrayList<>();
         try {
@@ -44,7 +47,6 @@ public class DAOChiTietHoaDon {
                     list.add(model);
                 }
             } finally {
-
                 rs.getStatement().getConnection().close();
             }
         } catch (SQLException ex) {
@@ -52,7 +54,8 @@ public class DAOChiTietHoaDon {
         }
         return list;
     }
-     private ChiTietHoaDon readFromResultSet(ResultSet rs) throws SQLException {
+
+    private ChiTietHoaDon readFromResultSet(ResultSet rs) throws SQLException {
         ChiTietHoaDon model = new ChiTietHoaDon();
         model.setMaChiTietHD(rs.getInt("MaChiTietHD"));
         model.setMaHD(rs.getInt("MaHD"));
@@ -63,4 +66,3 @@ public class DAOChiTietHoaDon {
         return model;
     }
 }
-

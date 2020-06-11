@@ -15,7 +15,6 @@ public class BLLChiTietHoaDon {
         if(kq > 0){
             
         }
-        
         return kq;
     }
 }

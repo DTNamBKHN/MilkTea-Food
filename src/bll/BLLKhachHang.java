@@ -16,46 +16,43 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
 public class BLLKhachHang {
-     //3. Hàm đổ dữ liệu vào Combobox Khách Hàng
-    public static void DoDuLieuVaoCBBKhachHang(JComboBox cbb, String keyword){
+    //3. Hàm đổ dữ liệu vào Combobox Khách Hàng
+
+    public static void DoDuLieuVaoCBBKhachHang(JComboBox cbb, String keyword) {
         cbb.removeAllItems();
         try {
             ResultSet rs = Other.KhachHangDao.GetByKeyword(keyword);
-            
-            DefaultComboBoxModel cbbModel = (DefaultComboBoxModel)cbb.getModel();
-           
-            while(rs.next()){
-                MyCombobox mb = new MyCombobox(rs.getString("HoTenKH"), 
-                                            rs.getInt("MaKH"));
-                cbbModel.addElement(mb);                
+
+            DefaultComboBoxModel cbbModel = (DefaultComboBoxModel) cbb.getModel();
+
+            while (rs.next()) {
+                MyCombobox mb = new MyCombobox(rs.getString("HoTenKH"),
+                        rs.getInt("MaKH"));
+                cbbModel.addElement(mb);
             }
         } catch (SQLException ex) {
             ThongBao.ThongBao("Thông báo", "Lỗi truy vấn dữ liệu.");
         }
     }
-    
-    
-    
-    
-    public static KhachHang GetKHByMaKH(String MaKH){
-        ResultSet rs = Other.KhachHangDao.GetByMaKH(MaKH);
-        
-        try {
-            if(rs.next()){
-                KhachHang kh = new KhachHang();
-      kh.setMaKH(rs.getString("MaKH"));
-      kh.setHotenKH(rs.getString("HoTenKH"));
-      kh.setGioitinh(rs.getBoolean("GioiTinh"));
-      kh.setDienthoai(rs.getString("DienThoai")); 
-      kh.setGhichu(rs.getString("GhiChu"));
-      kh.setGmail(rs.getString("Email"));
 
-                
+    public static KhachHang GetKHByMaKH(String MaKH) {
+        ResultSet rs = Other.KhachHangDao.GetByMaKH(MaKH);
+
+        try {
+            if (rs.next()) {
+                KhachHang kh = new KhachHang();
+                kh.setMaKH(rs.getString("MaKH"));
+                kh.setHotenKH(rs.getString("HoTenKH"));
+                kh.setGioitinh(rs.getBoolean("GioiTinh"));
+                kh.setDienthoai(rs.getString("DienThoai"));
+                kh.setGhichu(rs.getString("GhiChu"));
+                kh.setGmail(rs.getString("Email"));
+
                 return kh;
             }
         } catch (SQLException ex) {
             ThongBao.ThongBao("Lỗi lấy khách hàng theo mã", "Thông báo");
-           
+
         }
         return null;
     }
