@@ -12,10 +12,16 @@ import Other.HoaDon;
 import Other.MaSPAndSoLuong;
 import Other.MaSPAndSoLuongDAO;
 import Other.MyCombobox;
+import com.orsoncharts.plot.PiePlot3D;
 import java.sql.ResultSet;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
 
 public class CTHoaDon extends javax.swing.JFrame {
 
@@ -42,14 +48,14 @@ public class CTHoaDon extends javax.swing.JFrame {
         List<ChiTietHoaDon> list = hd.select();
 
         try {
-            for (ChiTietHoaDon cd : list) {
+            for (ChiTietHoaDon item : list) {
                 Object[] row = {
-                    cd.getMaChiTietHD(),
-                    cd.getMaHD(),
-                    cd.getMaSP(),
-                    cd.getSoLuong(),
-                    cd.getThanhTien(),
-                    cd.getKichThuoc()
+                    item.getMaChiTietHD(),
+                    item.getMaHD(),
+                    item.getMaSP(),
+                    item.getSoLuong(),
+                    item.getThanhTien(),
+                    item.getKichThuoc()
                 };
                 model.addRow(row);
             }
@@ -66,10 +72,10 @@ public class CTHoaDon extends javax.swing.JFrame {
         List<MaSPAndSoLuong> list = hdThongKe.select();
 
         try {
-            for (MaSPAndSoLuong cd : list) {
+            for (MaSPAndSoLuong item : list) {
                 Object[] row = {
-                    cd.getMaSP(),
-                    cd.getSoLuong()
+                    item.getMaSP(),
+                    item.getSoLuong()
                 };
                 model.addRow(row);
             }
@@ -93,6 +99,7 @@ public class CTHoaDon extends javax.swing.JFrame {
         tblCTHD2 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblThongKe = new javax.swing.JTable();
+        btnPieChart = new javax.swing.JButton();
 
         btnBarChart.setText("Bar Chart");
         btnBarChart.addActionListener(new java.awt.event.ActionListener() {
@@ -132,17 +139,31 @@ public class CTHoaDon extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblThongKe);
 
+        btnPieChart.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnPieChart.setText("Biểu đồ xu hướng mua hàng");
+        btnPieChart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPieChartActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnPieChart)
+                .addGap(178, 178, 178))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(111, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addComponent(btnPieChart)
+                .addGap(33, 33, 33)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -161,6 +182,28 @@ public class CTHoaDon extends javax.swing.JFrame {
     private void btnBarChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarChartActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBarChartActionPerformed
+
+    private void btnPieChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPieChartActionPerformed
+        DefaultPieDataset pieDataset = new DefaultPieDataset();
+        List<MaSPAndSoLuong> list = hdThongKe.select();
+        try {
+            for (MaSPAndSoLuong item : list) {
+                pieDataset.setValue(String.valueOf(item.getMaSP()), 
+                        item.getSoLuong());
+            }
+            JFreeChart chart = ChartFactory.createPieChart("Biểu "
+                    + "đồ xu hướng mua hàng", pieDataset, true, true, true);
+            PiePlot p = (PiePlot) chart.getPlot();
+            ChartFrame frame = new ChartFrame("Biểu đồ xu hướng mua hàng", chart);
+            frame.setVisible(true);
+            frame.setSize(450, 500);
+            frame.setLocationRelativeTo(null);
+            frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            DialogHelper.alert(this, "Lỗi hiện thị biểu đồ.");
+        }
+    }//GEN-LAST:event_btnPieChartActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,6 +243,7 @@ public class CTHoaDon extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBarChart;
+    private javax.swing.JButton btnPieChart;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblCTHD2;
